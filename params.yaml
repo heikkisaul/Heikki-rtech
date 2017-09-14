@@ -1,0 +1,12 @@
+background_b: 255
+background_g: 86
+background_r: 150
+rosdistro: 'indigo
+
+  '
+roslaunch:
+  uris: {host_ims_lab07__45828: 'http://ims-lab07:45828/'}
+rosversion: '1.11.21
+
+  '
+run_id: 89ce3f0c-9934-11e7-ad71-28e34724bfb5
