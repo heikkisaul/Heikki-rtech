@@ -42,6 +42,17 @@
     </collision>
     <xacro:default_inertial mass="10"/>
   </link>
+  
+  <link name="base_footprint">
+  </link>
+    
+    <joint name="base_footprint_joint" type="fixed">
+      <parent link="base_footprint"/>
+      <child link="base_link"/>
+      <origin xyz="0 0 ${wheeldiam+0.1+bodylen/2}" rpy="0 0 0"/>
+    </joint>   
+      
+     
 
   <xacro:macro name="wheel" params="prefix suffix reflect">
 
