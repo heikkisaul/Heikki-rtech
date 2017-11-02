@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
-//#include "ros/ros.h"
-//#include "mouse_reader/Mouse.h"
+#include "ros/ros.h"
+#include "mouse_reader/Mouse.h"
 #include <time.h>
 
 
@@ -14,6 +14,12 @@
 
 int main(int argc, char** argv)
 {
+    ros::init(argc, argv, "mouse_reader");
+    ros::NodeHandle n;
+    
+    ros::Publisher mouse_pub = n.advertise<mouse_reader::Mouse>("mouse_msg",1000);
+    ros::Rate loop_rate(10);
+    
     int fd, bytes;
     unsigned char data[3];
     int8_t pos[5] = {0,0,0,0,0};
@@ -28,9 +34,13 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    int left, middle, right;
+    int left, middle, right, x_sum, y_sum;
     signed char x, y;
-    while(1)
+    
+    x_sum = 0;
+    y_sum = 0;
+    
+    while(ros::ok())
     {
         // Read Mouse     
         bytes = read(fd, data, sizeof(data));
@@ -49,22 +59,23 @@ int main(int argc, char** argv)
 	    pos[2] = left;
 	    pos[3] = middle;
 	    pos[4] = right;
-	    printf("x=%d, y=%d, left=%d, middle=%d, right=%d\n", pos[0], pos[1], pos[2], pos[3], pos[4]);
-        }   
+	    //printf("x=%d, y=%d, left=%d, middle=%d, right=%d\n", pos[0], pos[1], pos[2], pos[3], pos[4]);
+
+        }
+	mouse_reader::Mouse mouse_msg;
+	
+	x_sum = x_sum + x;
+	y_sum = y_sum + y;
+	    
+	mouse_msg.x = x_sum/100.0;
+	mouse_msg.y = y_sum/100.0;
+	mouse_msg.left = left;
+	mouse_msg.middle = middle;
+	mouse_msg.right = right;
+	
+	mouse_pub.publish(mouse_msg);
+	ros::spinOnce();
+	loop_rate.sleep();
     }
     return 0; 
 }
-
-/*int main(int argc, char** argv){  
-  
-  signed char x, y;
-  int left, middle, right;
-  while(1) {
-    x = std::get<0>(mouse_event_reader());
-    x = std::get<1>(mouse_event_reader());
-    left = std::get<2>(mouse_event_reader());
-    middle = std::get<3>(mouse_event_reader());
-    right = std::get<4>(mouse_event_reader());
-    printf("x=%d, y=%d, left=%d, middle=%d, right=%d\n", x, y, left, middle, right);
-  }
-}*/

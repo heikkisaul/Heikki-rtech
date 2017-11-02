@@ -1,5 +1,5 @@
-int8 x
-int8 y
-int8 left
-int8 middle
-int8 right
+float64 x
+float64 y
+bool left
+bool middle
+bool right

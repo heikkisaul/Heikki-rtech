@@ -116,7 +116,7 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
 # include
-# ${catkin_INCLUDE_DIRS}
+	# ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -148,3 +148,6 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+
+add_executable(mouse_reader src/mouse_reader.cpp)
+target_link_libraries(mouse_reader ${catkin_LIBRARIES})
