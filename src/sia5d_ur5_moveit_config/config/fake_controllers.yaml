@@ -1,0 +1,33 @@
+controller_list:
+  - name: fake_sia5d_controller
+    joints:
+      - sia5d_joint_s
+      - sia5d_joint_l
+      - sia5d_joint_e
+      - sia5d_joint_u
+      - sia5d_joint_r
+      - sia5d_joint_b
+      - sia5d_joint_t
+  - name: fake_ur5_controller
+    joints:
+      - ur5_shoulder_pan_joint
+      - ur5_shoulder_lift_joint
+      - ur5_elbow_joint
+      - ur5_wrist_1_joint
+      - ur5_wrist_2_joint
+      - ur5_wrist_3_joint
+  - name: fake_sia5d_ur5_controller
+    joints:
+      - sia5d_joint_s
+      - sia5d_joint_l
+      - sia5d_joint_e
+      - sia5d_joint_u
+      - sia5d_joint_r
+      - sia5d_joint_b
+      - sia5d_joint_t
+      - ur5_shoulder_pan_joint
+      - ur5_shoulder_lift_joint
+      - ur5_elbow_joint
+      - ur5_wrist_1_joint
+      - ur5_wrist_2_joint
+      - ur5_wrist_3_joint

@@ -1,0 +1,35 @@
+controller_list:
+  - name: fake_primo_controller
+    joints:
+      - primo_joint_s
+      - primo_joint_l
+      - primo_joint_e
+      - primo_joint_u
+      - primo_joint_r
+      - primo_joint_b
+      - primo_joint_t
+  - name: fake_secunda_controller
+    joints:
+      - secunda_joint_s
+      - secunda_joint_l
+      - secunda_joint_e
+      - secunda_joint_u
+      - secunda_joint_r
+      - secunda_joint_b
+      - secunda_joint_t
+  - name: fake_dual_manipulator_controller
+    joints:
+      - primo_joint_s
+      - primo_joint_l
+      - primo_joint_e
+      - primo_joint_u
+      - primo_joint_r
+      - primo_joint_b
+      - primo_joint_t
+      - secunda_joint_s
+      - secunda_joint_l
+      - secunda_joint_e
+      - secunda_joint_u
+      - secunda_joint_r
+      - secunda_joint_b
+      - secunda_joint_t
