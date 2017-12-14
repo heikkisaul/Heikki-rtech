@@ -1,0 +1,4 @@
+<launch>
+	<node name="alcohol" pkg="alcohol" type="alcohol"/>
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find alcohol)/config/alcohol.rviz" />
+</launch>
